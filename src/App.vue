@@ -49,7 +49,7 @@ main{
     background: white;
     box-shadow: 0 0 3px hsla(0,0,0,0.5);
     border-radius: 4px;
-    overflow: hidden;
+    overflow: auto;
   }
   > .preview{
     flex: 1;

@@ -14,20 +14,7 @@
         <ProfileEditor v-bind:profile="profile"/>
       </li>
       <li v-bind:class="{active: currentTab === 1}">
-        <h2>工作经历</h2>
-        <el-form>
-          <div class="container" v-for="(work, index) in workHistory">
-            <el-form-item label="公司">
-              <el-input v-model="work.company"></el-input>
-            </el-form-item>
-            <el-form-item label="工作内容">
-              <el-input v-model="work.content"></el-input>
-            </el-form-item>
-            <i class="el-icon-circle-close" v-on:click="removeWorkHistory(index)"></i>
-            <hr>
-          </div>
-          <el-button type="primary" v-on:click="addWorkHistory">添加一项</el-button>
-        </el-form>
+        <WorkHistoryEditor v-bind:workHistory="workHistory"/>
       </li>
       <li v-bind:class="{active: currentTab === 2}">
         <h2>学习经历</h2>
@@ -47,8 +34,9 @@
 
 <script>
   import ProfileEditor from './ProfileEditor'
+  import WorkHistoryEditor from './WorkHistoryEditor'
   export default {
-    components:{ ProfileEditor },
+    components:{ ProfileEditor, WorkHistoryEditor },
     data(){
       return {
         currentTab: 0,
@@ -64,14 +52,6 @@
       }
     },
     methods:{
-      addWorkHistory(){
-        this.workHistory.push({
-          company: '', content: ''
-        })
-      },
-      removeWorkHistory(index){
-        this.workHistory.splice(index, 1)
-      }
     },
     created(){
     }
